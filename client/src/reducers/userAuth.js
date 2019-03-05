@@ -1,43 +1,63 @@
 function userAuth(
-  state = { message: '', showStatus: false, pending: false, loggedIn: false },
+  state = { message: "", showStatus: false, pending: false, loggedIn: false },
   action
 ) {
   switch (action.type) {
-    case 'LOGIN_SUCCESS': {
+    case "LOGIN_SUCCESS": {
       const { userId, username } = action;
       return {
         ...state,
-        message: 'Logged in!',
+        message: "Logged in!",
         pending: false,
         loggedIn: true,
         userId,
-        username,
+        username
       };
     }
-    case 'LOGIN_FAIL':
-      return { ...state, message: action.message, showStatus: true, pending: false };
-    case 'LOGIN_PENDING':
-      return { ...state, message: 'Logging in...', showStatus: true, pending: true };
-    case 'SIGNUP_SUCCESS':
+    case "LOGIN_FAIL":
       return {
         ...state,
-        message: 'Account created!',
+        message: action.message,
+        showStatus: true,
+        pending: false
+      };
+    case "LOGIN_PENDING":
+      return {
+        ...state,
+        message: "Logging in...",
+        showStatus: true,
+        pending: true
+      };
+    case "SIGNUP_SUCCESS":
+      return {
+        ...state,
+        message: "Account created!",
         showStatus: true,
         pending: false,
-        loggedIn: true,
+        loggedIn: true
       };
-    case 'SIGNUP_FAIL':
-      return { ...state, message: action.message, showStatus: true, pending: false };
-    case 'SIGNUP_PENDING':
-      return { ...state, message: 'Creating Account...', showStatus: true, pending: true };
-    case 'LOG_OUT':
+    case "SIGNUP_FAIL":
       return {
         ...state,
-        message: '',
+        message: action.message,
+        showStatus: true,
+        pending: false
+      };
+    case "SIGNUP_PENDING":
+      return {
+        ...state,
+        message: "Creating Account...",
+        showStatus: true,
+        pending: true
+      };
+    case "LOG_OUT":
+      return {
+        ...state,
+        message: "",
         showStatus: false,
         loggedIn: false,
         userId: null,
-        username: '',
+        username: ""
       };
     default:
       return state;

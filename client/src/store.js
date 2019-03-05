@@ -1,14 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
-import rootReducer from './reducers';
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunkMiddleware from "redux-thunk";
+import rootReducer from "./reducers";
 
-import accessories from './data/accessoryPlans';
-import dailySplits from './data/dailySplits';
+import accessories from "./data/accessoryPlans";
+import dailySplits from "./data/dailySplits";
 
 const defaultState = {
   accessories,
-  dailySplits,
+  dailySplits
 };
 
 const store = createStore(

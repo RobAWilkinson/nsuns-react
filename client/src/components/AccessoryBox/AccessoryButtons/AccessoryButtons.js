@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class AccessoryButtons extends Component {
   state = {
-    clicked: false,
+    clicked: false
   };
   componentDidMount = () => {
     if (this.props.clicked) this.setState({ clicked: true });
@@ -21,7 +21,9 @@ class AccessoryButtons extends Component {
         <button onClick={() => this.props.deleteAcc()}>X</button>
         <img
           onClick={this.toggleClicked}
-          src={this.state.clicked ? './save_icon.svg' : './pencil-edit-button.svg'}
+          src={
+            this.state.clicked ? "./save_icon.svg" : "./pencil-edit-button.svg"
+          }
         />
       </div>
     );

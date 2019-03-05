@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setWeightBoxOption, setTimerOption } from '../../../actions/';
-import './WeightBoxSelector.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setWeightBoxOption, setTimerOption } from "../../../actions/";
+import "./WeightBoxSelector.css";
 
 class WeightBoxSelector extends Component {
   state = {
-    timerSelected: false,
+    timerSelected: false
   };
   handleSelectorChange = e => {
     const { userId } = this.props.userAuth;
@@ -23,22 +23,27 @@ class WeightBoxSelector extends Component {
       <div className="standardSelector__container">
         <div className="standard-selector">
           <p>Weight Box click effect: </p>
-          <select value={userSettings.wbOption} onChange={this.handleSelectorChange}>
+          <select
+            value={userSettings.wbOption}
+            onChange={this.handleSelectorChange}
+          >
             <option value="mark">Mark (only)</option>
             <option value="timer">Timer</option>
           </select>
         </div>
-        {this.state.timerSelected && (
+        {this.state.timerSelected &&
           <div className="timer-selector">
             <p>Rest Time: </p>
-            <select value={userSettings.timerOption} onChange={this.handleTimerChange}>
+            <select
+              value={userSettings.timerOption}
+              onChange={this.handleTimerChange}
+            >
               <option value="30">0:30</option>
               <option value="60">1:00</option>
               <option value="90">1:30</option>
               <option value="120">2:00</option>
             </select>
-          </div>
-        )}
+          </div>}
       </div>
     );
   }
@@ -46,7 +51,7 @@ class WeightBoxSelector extends Component {
 
 const mapStateToProps = state => ({
   userSettings: state.userSettings,
-  userAuth: state.userAuth,
+  userAuth: state.userAuth
 });
 
 export default connect(mapStateToProps)(WeightBoxSelector);

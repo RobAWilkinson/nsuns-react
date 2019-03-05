@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
-import './DailyLift.css';
-import WeightBox from '../WeightBox/WeightBox';
-import AccessoryBox from '../AccessoryBox/AccessoryBox';
-import { openAccessoryBox } from '../../actions';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import "./DailyLift.css";
+import WeightBox from "../WeightBox/WeightBox";
+import AccessoryBox from "../AccessoryBox/AccessoryBox";
+import { openAccessoryBox } from "../../actions";
+import { connect } from "react-redux";
 
 class dailyLift extends Component {
   state = {
-    openAccessoryBox: false,
+    openAccessoryBox: false
   };
 
   handleClick = () => {
-    this.setState({ openAccessoryBox: this.state.openAccessoryBox ? false : true });
+    this.setState({
+      openAccessoryBox: this.state.openAccessoryBox ? false : true
+    });
   };
 
   componentDidUpdate = () => {
-    console.log('hello');
+    console.log("hello");
   };
   render() {
     const {
@@ -30,14 +32,14 @@ class dailyLift extends Component {
       max2,
       standard,
       dayIndex,
-      accessories,
+      accessories
     } = this.props;
     // const accessoryBoxOpen = accessories.openAccessoryBox[dayIndex];
     const accessoryBoxOpen = this.state.openAccessoryBox;
     const t1Workouts = t1Reps.map((rep, i) => {
       return (
         <WeightBox
-          key={'wbt1' + dayIndex + i}
+          key={"wbt1" + dayIndex + i}
           reps={rep}
           weights={t1Weights[i]}
           max={max1}
@@ -48,7 +50,7 @@ class dailyLift extends Component {
     const t2Workouts = t2Reps.map((rep, i) => {
       return (
         <WeightBox
-          key={'wbt2' + dayIndex + i}
+          key={"wbt2" + dayIndex + i}
           reps={rep}
           weights={t2Weights[i]}
           max={max2}
@@ -71,7 +73,11 @@ class dailyLift extends Component {
             Accessories
             <img
               onClick={this.toggleExpand}
-              src={accessoryBoxOpen ? './collapse-button.svg' : './expand-button.svg'}
+              src={
+                accessoryBoxOpen
+                  ? "./collapse-button.svg"
+                  : "./expand-button.svg"
+              }
               alt=""
               height="auto"
               width="10%"
@@ -84,7 +90,7 @@ class dailyLift extends Component {
   }
 }
 const mapStateToProps = state => ({
-  accessories: state.accessories,
+  accessories: state.accessories
 });
 
 export default connect(mapStateToProps)(dailyLift);

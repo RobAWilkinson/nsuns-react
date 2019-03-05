@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import './App.css';
-import UserSettings from './components/UserSettings/UserSettings';
-import { connect } from 'react-redux';
-import { jwtLogin, openSettings } from './actions';
-import MainPage from './views/mainPage';
+import React, { Component } from "react";
+import "./App.css";
+import UserSettings from "./components/UserSettings/UserSettings";
+import { connect } from "react-redux";
+import { jwtLogin, openSettings } from "./actions";
+import MainPage from "./views/mainPage";
 
 class App extends Component {
   componentDidMount = () => {
-    const userToken = localStorage.getItem('userId');
+    const userToken = localStorage.getItem("userId");
     if (userToken) this.props.dispatch(jwtLogin(userToken));
   };
 
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
   settingsOpen: state.userSettings.settingsOpen,
   accessories: state.accessories,
   userAuth: state.userAuth,
-  userSettings: state.userSettings,
+  userSettings: state.userSettings
 });
 
 export default connect(mapStateToProps)(App);

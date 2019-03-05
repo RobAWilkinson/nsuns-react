@@ -1,14 +1,14 @@
-const router = require('express').Router();
-const accessoryController = require('../controllers/accessoryController');
+const router = require("express").Router();
+const accessoryController = require("../controllers/accessoryController");
 
 router
-  .route('/accessory/:userId')
+  .route("/accessory/:userId")
   .get(accessoryController.getAccessoryPlan)
   .put(accessoryController.editAccessory)
   .post(accessoryController.addAccessory);
 
 router
-  .route('/accessory')
+  .route("/accessory")
   .post(accessoryController.createAccessoryPlan)
   .delete(accessoryController.deleteAccessory)
   .put(accessoryController.saveAccessoryPlan);

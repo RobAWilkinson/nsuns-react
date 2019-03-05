@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { selectStandard } from '../../../actions/';
-import './StandardSelector.css';
+import React from "react";
+import { connect } from "react-redux";
+import { selectStandard } from "../../../actions/";
+import "./StandardSelector.css";
 
 function StandardSelector(props) {
   const handleChange = e => {
@@ -20,7 +20,7 @@ function StandardSelector(props) {
 
 const mapStateToProps = state => ({
   userSettings: state.userSettings,
-  userAuth: state.userAuth,
+  userAuth: state.userAuth
 });
 
 export default connect(mapStateToProps)(StandardSelector);

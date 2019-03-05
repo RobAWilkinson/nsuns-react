@@ -1,9 +1,9 @@
-import { fetchRequest } from './';
+import { fetchRequest } from "./";
 
 export const signUp = async data => {
   // console.log('creating new user');
   try {
-    let resp = await fetchRequest('/auth/signUp', 'POST', data);
+    let resp = await fetchRequest("/auth/signUp", "POST", data);
     return resp;
   } catch (err) {
     if (err) console.error(err);
@@ -11,7 +11,7 @@ export const signUp = async data => {
 };
 export const logIn = async data => {
   try {
-    let userInfo = await fetchRequest('/auth/login', 'POST', data);
+    let userInfo = await fetchRequest("/auth/login", "POST", data);
     return userInfo;
   } catch (err) {
     if (err) console.error(err);
@@ -19,7 +19,7 @@ export const logIn = async data => {
 };
 export const jwtLogin = async token => {
   try {
-    let resp = await fetchRequest('/auth/jwtLogin', 'POST', { token });
+    let resp = await fetchRequest("/auth/jwtLogin", "POST", { token });
     return resp;
   } catch (err) {
     if (err) throw err;

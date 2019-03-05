@@ -1,6 +1,6 @@
 function dailySplits(state = {}, action) {
   switch (action.type) {
-    case 'CHANGE_REPS':
+    case "CHANGE_REPS":
       console.log(state);
       return state;
     default:

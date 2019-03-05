@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import './AccessoryBox.css';
-import { connect } from 'react-redux';
-import AccessoryRow from './AccessoryRow/AccessoryRow';
+import React, { Component } from "react";
+import "./AccessoryBox.css";
+import { connect } from "react-redux";
+import AccessoryRow from "./AccessoryRow/AccessoryRow";
 
 class AccessoryBox extends Component {
   state = {
-    addNewAccessory: false,
+    addNewAccessory: false
   };
   addAccessory = () => {
-    this.setState({ addNewAccessory: this.state.addNewAccessory ? false : true });
+    this.setState({
+      addNewAccessory: this.state.addNewAccessory ? false : true
+    });
   };
 
   render() {
     const { accessories, userAuth, dayIndex, dailySplits } = this.props;
     const { accessoryPlan } = accessories;
-    const accessoryItems = accessories[accessoryPlan][dayIndex].map((accessory, accIndex) => {
+    const accessoryItems = accessories[accessoryPlan][
+      dayIndex
+    ].map((accessory, accIndex) => {
       const { title, sets, reps, weight, id } = accessory;
       return (
         <AccessoryRow
@@ -41,11 +45,10 @@ class AccessoryBox extends Component {
         </div>
         {accessoryItems}
         {addNewAccessory && <AccessoryRow dayIndex={dayIndex} />}
-        {userAuth.loggedIn && (
+        {userAuth.loggedIn &&
           <button onClick={this.addAccessory}>
-            {addNewAccessory ? 'Cancel' : 'Add Accessory'}
-          </button>
-        )}
+            {addNewAccessory ? "Cancel" : "Add Accessory"}
+          </button>}
       </div>
     );
   }
@@ -53,7 +56,7 @@ class AccessoryBox extends Component {
 const mapStateToProps = state => ({
   userAuth: state.userAuth,
   accessories: state.accessories,
-  dailySplits: state.dailySplits,
+  dailySplits: state.dailySplits
 });
 
 export default connect(mapStateToProps)(AccessoryBox);

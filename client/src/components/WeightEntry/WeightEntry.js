@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './WeightEntry.css';
-import { connect } from 'react-redux';
-import { userLiftOnChange } from '../../actions';
-import { saveUserLifts } from '../../utils/userInfo';
+import React, { Component } from "react";
+import "./WeightEntry.css";
+import { connect } from "react-redux";
+import { userLiftOnChange } from "../../actions";
+import { saveUserLifts } from "../../utils/userInfo";
 
 class WeightEntry extends Component {
   onChange = e => {
@@ -21,7 +21,7 @@ class WeightEntry extends Component {
       ohpRM,
       ohpTM,
       squatRM,
-      squatTM,
+      squatTM
     } = this.props.userLifts;
     const { userId } = this.props.userAuth;
     saveUserLifts({
@@ -33,7 +33,7 @@ class WeightEntry extends Component {
       ohpTM,
       squatRM,
       squatTM,
-      userId,
+      userId
     });
   };
 
@@ -52,7 +52,7 @@ class WeightEntry extends Component {
               <input
                 className="rm-input"
                 onChange={this.onChange}
-                value={userLifts.benchRM || ''}
+                value={userLifts.benchRM || ""}
                 name="benchRM"
                 id="benchRMInput"
                 type="number"
@@ -63,7 +63,7 @@ class WeightEntry extends Component {
               <input
                 className="rm-input"
                 onChange={this.onChange}
-                value={userLifts.ohpRM || ''}
+                value={userLifts.ohpRM || ""}
                 name="ohpRM"
                 id="ohpRMInput"
                 type="number"
@@ -74,7 +74,7 @@ class WeightEntry extends Component {
               <input
                 className="rm-input"
                 onChange={this.onChange}
-                value={userLifts.squatRM || ''}
+                value={userLifts.squatRM || ""}
                 name="squatRM"
                 id="squatRMInput"
                 type="number"
@@ -85,7 +85,7 @@ class WeightEntry extends Component {
               <input
                 className="tm-input"
                 onChange={this.onChange}
-                value={userLifts.deadliftRM || ''}
+                value={userLifts.deadliftRM || ""}
                 name="deadliftRM"
                 id="deadliftRMInput"
                 type="number"
@@ -96,7 +96,7 @@ class WeightEntry extends Component {
               <input
                 className="tm-input"
                 onChange={this.onChange}
-                value={userLifts.benchTM || ''}
+                value={userLifts.benchTM || ""}
                 name="benchTM"
                 id="benchTMInput"
                 type="number"
@@ -107,7 +107,7 @@ class WeightEntry extends Component {
               <input
                 className="tm-input"
                 onChange={this.onChange}
-                value={userLifts.ohpTM || ''}
+                value={userLifts.ohpTM || ""}
                 name="ohpTM"
                 id="ohpTMInput"
                 type="number"
@@ -118,7 +118,7 @@ class WeightEntry extends Component {
               <input
                 className="tm-input"
                 onChange={this.onChange}
-                value={userLifts.squatTM || ''}
+                value={userLifts.squatTM || ""}
                 name="squatTM"
                 id="squatTMInput"
                 type="number"
@@ -129,13 +129,14 @@ class WeightEntry extends Component {
               <input
                 className="tm-input"
                 onChange={this.onChange}
-                value={userLifts.deadliftTM || ''}
+                value={userLifts.deadliftTM || ""}
                 name="deadliftTM"
                 id="deadliftTMInput"
                 type="number"
               />
             </div>
-            {userAuth.loggedIn && <button type="submit">Save new values</button>}
+            {userAuth.loggedIn &&
+              <button type="submit">Save new values</button>}
           </form>
         </div>
       </div>
@@ -144,7 +145,7 @@ class WeightEntry extends Component {
 }
 const mapStateToProps = state => ({
   userLifts: state.userLifts,
-  userAuth: state.userAuth,
+  userAuth: state.userAuth
 });
 
 export default connect(mapStateToProps)(WeightEntry);

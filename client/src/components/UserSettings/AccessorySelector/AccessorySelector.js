@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './AccessorySelector.css';
-import { selectAccessoryPlan } from '../../../actions/';
+import React from "react";
+import { connect } from "react-redux";
+import "./AccessorySelector.css";
+import { selectAccessoryPlan } from "../../../actions/";
 
 function AccessorySelector(props) {
   const handleChange = e => {
@@ -22,7 +22,7 @@ function AccessorySelector(props) {
 
 const mapStateToProps = state => ({
   accessories: state.accessories,
-  userAuth: state.userAuth,
+  userAuth: state.userAuth
 });
 
 export default connect(mapStateToProps)(AccessorySelector);

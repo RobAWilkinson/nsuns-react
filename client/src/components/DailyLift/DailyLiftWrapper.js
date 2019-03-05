@@ -1,12 +1,16 @@
-import React from 'react';
-import DailyLift from './DailyLift';
-import { connect } from 'react-redux';
+import React from "react";
+import DailyLift from "./DailyLift";
+import { connect } from "react-redux";
 
 // function DailyLiftWrapper(props) {
-function DailyLiftWrapper({ userLifts, dailySplits, userSettings: { nsunsVariation } }) {
+function DailyLiftWrapper({
+  userLifts,
+  dailySplits,
+  userSettings: { nsunsVariation }
+}) {
   const dailyLifts = dailySplits[nsunsVariation].map((day, index) => {
-    const base1 = day.baseLift[0] + 'TM';
-    const base2 = day.baseLift[1] + 'TM';
+    const base1 = day.baseLift[0] + "TM";
+    const base2 = day.baseLift[1] + "TM";
     return (
       <DailyLift
         day={day.day}
@@ -18,10 +22,10 @@ function DailyLiftWrapper({ userLifts, dailySplits, userSettings: { nsunsVariati
         t1Reps={day.t1Reps}
         t2Weights={day.t2Weights}
         t2Reps={day.t2Reps}
-        max1={userLifts[base1] || '0'}
-        max2={userLifts[base2] || '0'}
+        max1={userLifts[base1] || "0"}
+        max2={userLifts[base2] || "0"}
         standard={dailySplits.standard}
-        key={'dl' + index}
+        key={"dl" + index}
         dayIndex={index}
       />
     );
@@ -32,7 +36,7 @@ function DailyLiftWrapper({ userLifts, dailySplits, userSettings: { nsunsVariati
 const mapStateToProps = state => ({
   userLifts: state.userLifts,
   dailySplits: state.dailySplits,
-  userSettings: state.userSettings,
+  userSettings: state.userSettings
 });
 
 export default connect(mapStateToProps)(DailyLiftWrapper);

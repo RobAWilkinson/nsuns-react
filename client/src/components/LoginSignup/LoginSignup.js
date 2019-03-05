@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { userLogin, logOut, createNewUser, openSettings } from '../../actions';
-import './LoginSignup.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { userLogin, logOut, createNewUser, openSettings } from "../../actions";
+import "./LoginSignup.css";
 
 class Login extends Component {
   state = {
-    userLogin: '',
-    pwLogin: '',
-    userSignUp: '',
-    pwSignUp: '',
-    selectSignUp: false,
+    userLogin: "",
+    pwLogin: "",
+    userSignUp: "",
+    pwSignUp: "",
+    selectSignUp: false
   };
 
   onChange = e => {
@@ -32,7 +32,7 @@ class Login extends Component {
 
   logOut = () => {
     this.props.logOut();
-    localStorage.removeItem('userId');
+    localStorage.removeItem("userId");
   };
 
   closeSettings = () => {
@@ -43,7 +43,7 @@ class Login extends Component {
     const { loggedIn, message, showStatus } = this.props.userAuth;
     return (
       <div className="loginSignup__container">
-        {!loggedIn && (
+        {!loggedIn &&
           <div className="loginSignup__login-container">
             <form action="">
               <h4>Login:</h4>
@@ -69,20 +69,19 @@ class Login extends Component {
                 Login
               </button>
             </form>
-          </div>
-        )}
+          </div>}
         {showStatus && <p>{message}</p>}
 
-        {!loggedIn && (
+        {!loggedIn &&
           <div
             className="loginSignUp__open-signup"
             onClick={() => this.setState({ selectSignUp: true })}
           >
             Sign up
-          </div>
-        )}
+          </div>}
 
-        {this.state.selectSignUp && !loggedIn && (
+        {this.state.selectSignUp &&
+          !loggedIn &&
           <div className="loginSignup__signup-container">
             <form action="">
               <label htmlFor="userSignUp">Username: </label>
@@ -107,14 +106,12 @@ class Login extends Component {
                 Sign Up
               </button>
             </form>
-          </div>
-        )}
+          </div>}
 
-        {loggedIn && (
+        {loggedIn &&
           <button className="loginSignup__logout" onClick={this.logOut}>
             Log Out
-          </button>
-        )}
+          </button>}
         {this.props.children}
         <button onClick={this.closeSettings}>Close Settings</button>
       </div>
@@ -123,9 +120,11 @@ class Login extends Component {
 }
 const mapStateToProps = state => ({
   userLifts: state.userLifts,
-  userAuth: state.userAuth,
+  userAuth: state.userAuth
 });
-export default connect(
-  mapStateToProps,
-  { userLogin, logOut, createNewUser, openSettings }
-)(Login);
+export default connect(mapStateToProps, {
+  userLogin,
+  logOut,
+  createNewUser,
+  openSettings
+})(Login);

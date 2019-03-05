@@ -1,77 +1,85 @@
-import * as Util from '../utils';
-import { getAccessoryPlanSuccess } from './accessoryActions';
+import * as Util from "../utils";
+import { getAccessoryPlanSuccess } from "./accessoryActions";
 
 export const selectStandardSuccess = standard => {
   return {
-    type: 'SELECT_STANDARD_SUCCESS',
-    standard,
+    type: "SELECT_STANDARD_SUCCESS",
+    standard
   };
 };
 
 export const timerOptionSuccess = option => {
   return {
-    type: 'TIMER_OPTION_SUCCESS',
-    option,
+    type: "TIMER_OPTION_SUCCESS",
+    option
   };
 };
 export const timerOptionFail = () => {
   return {
-    type: 'TIMER_OPTION_FAIL',
+    type: "TIMER_OPTION_FAIL"
   };
 };
 export const weightBoxSuccess = option => {
   return {
-    type: 'WEIGHTBOX_SUCCESS',
-    option,
+    type: "WEIGHTBOX_SUCCESS",
+    option
   };
 };
 export const weightBoxFail = () => {
   return {
-    type: 'WEIGHTBOX_FAIL',
+    type: "WEIGHTBOX_FAIL"
   };
 };
 export const variationSuccess = option => {
   return {
-    type: 'VARIATION_SUCCESS',
-    option,
+    type: "VARIATION_SUCCESS",
+    option
   };
 };
 export const variationFail = () => {
   return {
-    type: 'VARIATION_FAIL',
+    type: "VARIATION_FAIL"
   };
 };
 export const getUserSettingsSuccess = userSettings => {
   return {
-    type: 'GET_USER_SETTINGS_SUCCESS',
-    userSettings,
+    type: "GET_USER_SETTINGS_SUCCESS",
+    userSettings
   };
 };
 export const getUserSettingsFail = () => {
   return {
-    type: 'GET_USER_SETTINGS_FAIL',
+    type: "GET_USER_SETTINGS_FAIL"
   };
 };
 
 export const selectStandardFail = () => {
-  console.error('error');
+  console.error("error");
 };
 export const selectStandard = (standard, userId) => async dispatch => {
   const resp = await Util.selectStandard(standard, userId);
-  return resp.ok ? dispatch(selectStandardSuccess(standard)) : dispatch(selectStandardFail());
+  return resp.ok
+    ? dispatch(selectStandardSuccess(standard))
+    : dispatch(selectStandardFail());
 };
 
 export const setTimerOption = (option, userId) => async dispatch => {
   const resp = await Util.setTimerOption(option, userId);
-  return resp.ok ? dispatch(timerOptionSuccess(option)) : dispatch(timerOptionFail());
+  return resp.ok
+    ? dispatch(timerOptionSuccess(option))
+    : dispatch(timerOptionFail());
 };
 export const setWeightBoxOption = (option, userId) => async dispatch => {
   const resp = await Util.setWeightBoxOption(option, userId);
-  return resp.ok ? dispatch(weightBoxSuccess(option)) : dispatch(weightBoxFail());
+  return resp.ok
+    ? dispatch(weightBoxSuccess(option))
+    : dispatch(weightBoxFail());
 };
 export const setVariation = (option, userId) => async dispatch => {
   const resp = await Util.setVariation(option, userId);
-  return resp.ok ? dispatch(variationSuccess(option)) : dispatch(variationFail());
+  return resp.ok
+    ? dispatch(variationSuccess(option))
+    : dispatch(variationFail());
 };
 export const getUserSettings = userId => async dispatch => {
   const userSettings = await Util.getUserSettings(userId);
